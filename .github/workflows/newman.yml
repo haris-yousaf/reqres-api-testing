@@ -20,6 +20,8 @@ jobs:
         run: |
           newman run postman/reqres-collection.json \
             -e postman/reqres-environment.json \
+            --env-var "x-api-key=${{ secrets.REQRES_API_KEY }}" \
+            --env-var "projectId=${{ secrets.REQRES_PROJECT_ID }}" \
             --reporters cli,htmlextra \
             --reporter-htmlextra-export reports/newman-report.html
 
